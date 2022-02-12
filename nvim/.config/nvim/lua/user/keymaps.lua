@@ -18,12 +18,25 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Make the arrow keys unusable
+keymap("n", "<Up>", "<Nop>", opts)
+keymap("n", "<Down>", "<Nop>", opts)
+keymap("n", "<Left>", "<Nop>", opts)
+keymap("n", "<Right>", "<Nop>", opts)
+keymap("i", "<Up>", "<Nop>", opts)
+keymap("i", "<Down>", "<Nop>", opts)
+keymap("i", "<Left>", "<Nop>", opts)
+keymap("i", "<Right>", "<Nop>", opts)
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Save file
+keymap("n", "<Leader>s", ":w<CR>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -78,3 +91,11 @@ keymap("n", "<Leader>fg", ":Telescope live_grep <CR>", opts)
 
 -- buffers
 keymap("n", "<Leader>q", ":Bdelete <CR>", opts)
+
+-- Tmux 
+keymap("n", "<C-h>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", opts)
+keymap("n", "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", opts)
+keymap("n", "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", opts)
+keymap("n", "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", opts)
+--map<silent> <C-\> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>
+keymap("n", "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", opts)
