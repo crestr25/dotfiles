@@ -31,11 +31,11 @@ end
 
 -- Have packer use a popup window
 packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
+    display = {
+          open_fn = function()
+             return require("packer.util").float { border = "single" }
+          end,
+       },
 }
 
 -- Install your plugins here
@@ -51,7 +51,6 @@ return packer.startup(function(use)
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
-  use "akinsho/toggleterm.nvim"
   use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use "goolord/alpha-nvim"
@@ -89,8 +88,9 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
-  use "lewis6991/gitsigns.nvim"
-
+  use {
+    'lewis6991/gitsigns.nvim',
+  }
   -- Tmux
   use "alexghergh/nvim-tmux-navigation"
 
