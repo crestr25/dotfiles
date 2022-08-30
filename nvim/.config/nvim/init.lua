@@ -14,6 +14,7 @@ require "user.nvim-tree"
 require "user.comment"
 require "user.autopairs"
 require "user.bufferline"
+require "user.gitsigns"
 
 -- AUTOCOMPLETION
 require "user.cmp"

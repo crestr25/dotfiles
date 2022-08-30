@@ -40,65 +40,74 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- Packer manages itself
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
-  use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
-  use "akinsho/bufferline.nvim"
-  use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
-  use "lewis6991/impatient.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
-  use "goolord/alpha-nvim"
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+    -- Packer manages itself
+    use "wbthomason/packer.nvim" -- Have packer manage itself
+    -- required stuff
+    use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+    use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
-  -- Colorschemes
-  use "navarasu/onedark.nvim"
+    -- simple stuff
+    use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+    use "numToStr/Comment.nvim" -- Easily comment stuff
+    use "kyazdani42/nvim-web-devicons"
+    use "kyazdani42/nvim-tree.lua"
+    use "akinsho/bufferline.nvim"
+    use "moll/vim-bbye"
+    use "nvim-lualine/lualine.nvim"
+    use "lewis6991/impatient.nvim"
+    use "lukas-reineke/indent-blankline.nvim"
+    use "goolord/alpha-nvim"
+    use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
 
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
+    -- Colorschemes
+    use "navarasu/onedark.nvim"
 
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+    -- cmp plugins
+    use "hrsh7th/nvim-cmp" -- The completion plugin
+    use "hrsh7th/cmp-buffer" -- buffer completions
+    use "hrsh7th/cmp-path" -- path completions
+    use "hrsh7th/cmp-cmdline" -- cmdline completions
+    use "saadparwaiz1/cmp_luasnip" -- snippet completions
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-nvim-lua"
 
-  -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    -- snippets
+    use "L3MON4D3/LuaSnip" --snippet engine
+    use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
+    -- LSP
+    use "neovim/nvim-lspconfig" -- enable LSP
+    use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+    use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+    -- Telescope
+    use({
+        'nvim-telescope/telescope.nvim',
+        branch = "0.1.x",
+    })
+    use ({
+        'nvim-telescope/telescope-fzy-native.nvim',
+    })
+    -- Treesitter
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+    }
+    use "JoosepAlviste/nvim-ts-context-commentstring"
 
-  -- Git
-  use {
-    'lewis6991/gitsigns.nvim',
-  }
-  -- Tmux
-  use "alexghergh/nvim-tmux-navigation"
+    -- Git
+    use {
+        'lewis6991/gitsigns.nvim',
+    }
+    -- Tmux
+    use "alexghergh/nvim-tmux-navigation"
 
-  -- DAP
-  use "mfussenegger/nvim-dap"
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+    -- DAP
+    use "mfussenegger/nvim-dap"
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if PACKER_BOOTSTRAP then
+        require("packer").sync()
+    end
 end)
