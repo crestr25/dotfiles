@@ -1,0 +1,46 @@
+#####################
+## Starship config ##
+#####################
+
+command_timeout = 1000
+
+[username]
+style_user = "#51afef bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = 'on [Meli](bold yellow) '
+trim_at = "."
+disabled = false
+
+
+[directory]
+truncation_length = 10
+truncate_to_repo = true # truncates directory to root folder if in github repo
+style = "bold red"
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗](bold red)"
+
+[cmd_duration]
+min_time = 4
+show_milliseconds = false
+disabled = true
+style = "bold italic red"
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[python]
+format = "via [${symbol}python (${version} )(($virtualenv) )]($style)"
+style = "bold yellow"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+detect_extensions = ["py"]
+version_format = "v${raw}"
