@@ -25,3 +25,6 @@ require "user.impatient"
 require "user.indentline"
 require "user.alpha"
 require "user.autocommands"
+
+-- DEBUG
+require "user.dap"

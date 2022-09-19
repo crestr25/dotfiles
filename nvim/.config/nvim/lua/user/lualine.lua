@@ -10,8 +10,8 @@ lualine.setup({
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { { 'filename', path = 1, shorting_target = 40 } },
-    lualine_c = {},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = { { 'filename', path = 1, shorting_target = 40 } },
     lualine_x = { 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
