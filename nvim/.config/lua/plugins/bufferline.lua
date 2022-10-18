@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-bufferline.setup({
+local options = {
   options = {
     -- Pretty stuff
     indicator = {
@@ -58,4 +58,6 @@ bufferline.setup({
     enforce_regular_tabs = false,
     always_show_bufferline = false
   },
-})
+}
+
+bufferline.setup(options)

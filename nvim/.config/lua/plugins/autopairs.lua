@@ -1,14 +1,12 @@
--- Setup nvim-cmp.
 local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
     return
 end
 
-npairs.setup({
+local options = {
     check_ts = true,
     ts_config = {
         lua = { "string", "source" },
-        javascript = { "string", "template_string" },
         java = false,
     },
     disable_filetype = { "TelescopePrompt", "spectre_panel" },
@@ -24,7 +22,9 @@ npairs.setup({
         highlight = "Search",
         highlight_grey = "Comment",
     },
-})
+}
+
+npairs.setup(options)
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 local cmp_status_ok, cmp = pcall(require, "cmp")

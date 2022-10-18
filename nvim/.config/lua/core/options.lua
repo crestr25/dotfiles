@@ -1,3 +1,6 @@
+local opt = vim.opt
+local g = vim.g
+
 local options = {
     backup = false,                          -- creates a backup file
     clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
@@ -39,52 +42,47 @@ local options = {
     grepformat = '%f:%l:%c:%m,%f:%l:%m'
 }
 
+g.mapleader = " "
+
 vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
-    vim.opt[k] = v
+    opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
--- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
--- WildIgnore Stuff
-local wildignored = {
-  'tags',
-  '*/__pycache__/*',
-  '*/env/*',
-  '*.png',
-  '*.jpg',
-  '*.jpeg',
-  '*/migrations/*',
-  '*/.git/*',
+vim.cmd "let g:python3_host_prog = '/Users/crestrepo/.virtualenvs/nvim/bin/python'"
+-- disable some builtin vim plugins
+local default_plugins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+--  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "Tutor",
+  "rplugin",
+  "syntax",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
 }
 
-local wildignore = ''
-for i = 1, #wildignored do
-  wildignore = wildignore .. wildignored[i] .. ','
+for _, plugin in pairs(default_plugins) do
+  g["loaded_" .. plugin] = 1
 end
 
--- Finally, set wildignore...
-vim.opt.wildignore = wildignore
-
--- Suffixes Stuff
--- Get a lower priority when multiple files match a wildcard
-local suffixesed = {
-  '.class',
-  '.pyc',
-  '.feature',
-  'test',
-}
-
-local suffixes = ''
-for i = 1, #suffixesed do
-  suffixes = suffixes .. suffixesed[i] .. ','
-end
-
--- Finally, set suffixesed...
-vim.opt.suffixes = suffixes
-
-
-vim.cmd "let g:python3_host_prog = '/Users/crestrepo/.pyenv/versions/nvim/bin/python'"

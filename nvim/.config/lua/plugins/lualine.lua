@@ -2,8 +2,7 @@ local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
 end
-
-lualine.setup({
+local options = {
   options = {
     icons_enabled = true,
     theme = 'onedark',
@@ -27,4 +26,6 @@ lualine.setup({
   },
   tabline = {},
   extensions = { 'quickfix', 'fugitive', 'nvim-tree' },
-})
+}
+
+lualine.setup(options)
