@@ -1,2 +1,1 @@
-# Plugin lua config
-plugin/
+nvim/.config/nvim/plugin/packer_compiled.lua
