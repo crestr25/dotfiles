@@ -21,14 +21,6 @@ local mode_adapters = {
   command_mode = "c",
 }
 
----@class Keys
----@field insert_mode table
----@field normal_mode table
----@field terminal_mode table
----@field visual_mode table
----@field visual_block_mode table
----@field command_mode table
-
 Mappings.defaults = {
   insert_mode = {
     ["jj"] = "<Esc>",
@@ -50,6 +42,9 @@ Mappings.defaults = {
     ["<C-k>"] = "<C-w>k",
     ["<C-l>"] = "<C-w>l",
 
+    -- Clear Highlights
+    ["<leader>h"] = "<cmd>nohlsearch<CR>",
+
     -- Resize with arrows
     ["<C-Up>"] = ":resize -2<CR>",
     ["<C-Down>"] = ":resize +2<CR>",
@@ -68,15 +63,6 @@ Mappings.defaults = {
     -- Save file
     ["<Leader>s"] = "<cmd> w<CR>",
   },
-
-  term_mode = {
-    -- Terminal window navigation
-    ["<C-h>"] = "<C-\\><C-N><C-w>h",
-    ["<C-j>"] = "<C-\\><C-N><C-w>j",
-    ["<C-k>"] = "<C-\\><C-N><C-w>k",
-    ["<C-l>"] = "<C-\\><C-N><C-w>l",
-  },
-
   visual_mode = {
     -- Better indenting
     ["<"] = "<gv",
@@ -137,25 +123,26 @@ Mappings.comment = {
 
 Mappings.tabufline = {
     normal_mode = {
-        ["<TAB>"] = "<cmd> BufferLineCycleNext<CR>",
-        ["<S-Tab>"] = "<cmd> BufferLineCyclePrev<CR>",
-        ["<Leader>x"] = "<cmd> bdelete<CR>"
+        ["<S-l>"] = "<cmd>bnext<CR>",
+        ["<S-h>"] = "<cmd>bprevious<CR>",
+        ["<Leader>x"] = "<cmd>Bdelete!<CR>"
     }
 }
 
 Mappings.tmux = {
     normal_mode = {
-        ["<C-h>"] = ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>",
-        ["<C-j>"] = ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>",
-        ["<C-k>"] = ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>",
-        ["<C-l>"] = ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>",
-        ["<C-Space>"] = ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>",
+        ["<C-h>"] = "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<CR>",
+        ["<C-j>"] = "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>",
+        ["<C-k>"] = "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>",
+        ["<C-l>"] = "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>",
+        ["<C-Space>"] = "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>",
     }
 }
 
 Mappings.gitsigns = {
     normal_mode = {
-        ["<Leader>gb"] = "<cmd>Gitsigns toggle_current_line_blame <CR>"
+        ["<Leader>gb"] = "<cmd>Gitsigns toggle_current_line_blame <CR>",
+        ["<Leader>gg"] = "<cmd>lua _LAZYGIT_TOGGLE()<CR>"
     }
 }
 

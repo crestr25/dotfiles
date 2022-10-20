@@ -43,6 +43,8 @@ local options = {
 }
 
 g.mapleader = " "
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 
 vim.opt.shortmess:append "c"
 
@@ -52,37 +54,4 @@ end
 
 
 vim.cmd "let g:python3_host_prog = '/Users/crestrepo/.virtualenvs/nvim/bin/python'"
--- disable some builtin vim plugins
-local default_plugins = {
-  "2html_plugin",
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logipat",
---  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "matchit",
-  "tar",
-  "tarPlugin",
-  "rrhelper",
-  "spellfile_plugin",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
-  "Tutor",
-  "rplugin",
-  "syntax",
-  "synmenu",
-  "optwin",
-  "compiler",
-  "bugreport",
-  "ftplugin",
-}
-
-for _, plugin in pairs(default_plugins) do
-  g["loaded_" .. plugin] = 1
-end
 
