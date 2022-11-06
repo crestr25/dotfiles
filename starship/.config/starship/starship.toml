@@ -2,7 +2,7 @@
 ## Starship config ##
 #####################
 
-command_timeout = 1000
+command_timeout = 10000
 
 [username]
 style_user = "#51afef bold"
@@ -13,15 +13,17 @@ show_always = true
 
 [hostname]
 ssh_only = false
-format = 'on [Meli](bold yellow) '
 trim_at = "."
-disabled = false
+disabled = true
 
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bold red"
 
 [directory]
 truncation_length = 10
 truncate_to_repo = true # truncates directory to root folder if in github repo
-style = "bold red"
+style = "bold yellow"
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character] # The name of the module we are configuring is "character"
