@@ -13,8 +13,8 @@ local plugins = { -- Plug Manager and required plugins
     --
     {"goolord/alpha-nvim"},
     -- Colorschemes
-    {"navarasu/onedark.nvim"},
-    {"rebelot/kanagawa.nvim"},
+    {"EdenEast/nightfox.nvim"},
+    {'navarasu/onedark.nvim'},
     -- file managing , picker etc
     {"kyazdani42/nvim-tree.lua"},
     -- Lualine
