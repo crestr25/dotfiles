@@ -1,20 +1,4 @@
-require "plugins.plugins"
---require "plugins.autocommands"
-require "plugins.colorscheme"
-require "plugins.cmp"
-require "plugins.telescope"
-require "plugins.gitsigns"
-require "plugins.treesitter"
-require "plugins.autopairs"
-require "plugins.comment"
-require "plugins.nvimtree"
-require "plugins.bufferline"
-require "plugins.lualine"
-require "plugins.toggleterm"
--- require "plugins.project"
-require "plugins.impatient"
--- require "plugins.illuminate"
-require "plugins.indentline"
-require "plugins.alpha"
-require "plugins.lsp"
--- require "plugins.dap"
+return {
+	{ "nvim-lua/plenary.nvim", lazy = true },
+    { "MunifTanjim/nui.nvim" },
+}

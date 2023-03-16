@@ -1,3 +1,2 @@
-require "core.options"
-require "core.mappings".load()
-
+require("core.options")
+require("core.mappings")
