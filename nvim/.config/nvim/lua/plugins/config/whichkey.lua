@@ -95,23 +95,14 @@ local mappings = {
   --   },
   --   ["q"] = { "<cmd>q!<CR>", "Quit" },
   --   ["Q"] = { "<cmd>qa!<CR>", "Quit All" },
-  --   ["d"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    ["d"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   --   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  --   ["c"] = {
-  --     "<cmd>MonokaiProSelect<CR>",
-  --     "Choose moonokai pro filter",
-  --   },
   --   ["m"] = { "<cmd>WindowsMaximize<CR>", "Zoom window" },
-  --   ["r"] = {
-  --     "<cmd>source ~/.config/nvim/lua/tvl/core/resources/colorscheme.lua<CR>",
-  --     "Reload monokai-pro",
-  --   },
-  --   ["f"] = {
-  --     "<cmd>lua require('telescope.builtin').find_files()<cr>",
-  --     "Find files",
-  --   },
-  --   -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  --   ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+    ["f"] = {
+      "<cmd>lua require('telescope.builtin').find_files()<cr>",
+      "Find files",
+    },
+    ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   --   ["p"] = {
   --     "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
   --     "Projects",
