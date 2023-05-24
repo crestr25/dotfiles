@@ -77,6 +77,10 @@ source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/scripts.sh"
 source "$ZDOTDIR/aliases"
 
+# Pyenv
+command -v pyenv >/dev/null
+eval "$(pyenv init -)"
+
 # Work file if exists
 if [ -f ~/.workrc ]; then
     source "$HOME/.workrc"

@@ -21,5 +21,8 @@ export SAVEHIST=10000
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git' 2>/dev/null"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
 # Starship config
 export STARSHIP_CONFIG=/Users/crestrepo/.config/starship/starship.toml

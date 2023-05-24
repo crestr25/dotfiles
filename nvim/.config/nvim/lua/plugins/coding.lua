@@ -72,8 +72,8 @@ return {
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), { "i", "c" }),
-                    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), { "i", "c" }),
+                    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), { "i", "c" }),
+                    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), { "i", "c" }),
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
@@ -95,7 +95,7 @@ return {
                     formatting = {
                         fields = { "kind", "abbr", "menu" },
                         format = function(entry, item)
-                            local icons = require("utils.icons").kinds
+                            local icons = require("utils.icons").kind
                             item.kind = icons[item.kind]
                             item.menu = ({
                                 nvim_lsp = "Lsp",
@@ -142,5 +142,16 @@ return {
     },
     {
         "ThePrimeagen/vim-be-good",
+    },
+    {
+        "iamcco/markdown-preview.nvim",
+        config = function()
+          vim.fn["mkdp#util#install"]()
+        end,
+        config = function()
+            local g = vim.g
+            g.mkdp_auto_start = 1
+            g.mkdp_auto_close = 0
+        end
     }
 }

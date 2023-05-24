@@ -53,6 +53,7 @@ local servers = {
   },
   bashls = {},
   gopls = {},
+  marksman = {},
 }
 
 return servers

@@ -3,27 +3,9 @@ local icons = require("utils.icons")
 
 neotree.setup({
 	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-	-- popup_border_style = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" },
-	-- popup_border_style = "rounded",
+	popup_border_style = "rounded",
 	enable_git_status = true,
 	enable_diagnostics = true,
-	sources = {
-		"filesystem",
-		"buffers",
-		"git_status"
-	},
-	source_selector = {
-		winbar = true,
-		statusline = false, -- toggle to show selector on statusline
-		content_layout = "center",
-		tabs_layout = "equal",
-		tab_labels = {
-			filesystem = "" .. " Files",
-			buffers = "" .. " Bufs",
-			git_status = "" .. " Git",
-			-- diagnostics = "裂" .. " Diags",
-		},
-	},
 	default_component_configs = {
 		container = {
 			enable_character_fade = true,
@@ -43,9 +25,9 @@ neotree.setup({
             expander_highlight = "NeoTreeExpander",
 		},
 		icon = {
-			folder_closed = "",
-			folder_open = "",
-			folder_empty = "",
+			folder_closed = icons.ui.Folder,
+			folder_open = icons.ui.FolderOpen,
+			folder_empty = icons.ui.EmptyFolderOpen,
             default = "*",
             highlight = "NeoTreeFileIcon"
 		},
@@ -61,16 +43,16 @@ neotree.setup({
 		git_status = {
 			symbols = {
 				-- Change type
-				added = icons.git.added, -- or "✚", but this is redundant info if you use git_status_colors on the name
-				modified = icons.git.modified, -- or "", but this is redundant info if you use git_status_colors on the name
-				deleted = icons.git.removed, -- this can only be used in the git_status source
-				renamed = "", -- this can only be used in the git_status source
+				added = icons.git.LineAdded, -- or "✚", but this is redundant info if you use git_status_colors on the name
+				modified = icons.git.LineModified, -- or "", but this is redundant info if you use git_status_colors on the name
+				deleted = icons.git.FileDeleted, -- this can only be used in the git_status source
+				renamed = icons.git.FileRenamed, -- this can only be used in the git_status source
 				-- Status type
-				untracked = "",
-                ignored   = "",
-				unstaged = "",
-				staged = "S",
-				conflict = "",
+				untracked = icons.git.FileUntracked,
+                ignored   = icons.git.FileIgnored,
+				unstaged = icons.git.FileUnstaged,
+				staged = icons.git.FileStaged,
+				conflict = icons.git.FileUnmerged,
 			},
 		},
 		-- diagnostics = {
@@ -105,10 +87,7 @@ neotree.setup({
 			["l"] = "open",
 			["S"] = "open_split",
 			["s"] = "open_vsplit",
-			-- ["S"] = "split_with_window_picker",
-			-- ["s"] = "vsplit_with_window_picker",
 			["t"] = "open_tabnew",
-			["w"] = "open_with_window_picker",
 			["C"] = "close_node",
 			["a"] = {
 				"add",
