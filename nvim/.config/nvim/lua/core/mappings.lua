@@ -37,8 +37,11 @@ keymap("n", "<A-S-h>", ":BufferLineMovePrev<CR>", opts)
 -------------------- Press jk fast to enter --------------------
 keymap("i", "jj", "<ESC>", opts)
 
--------------------- Press jk fast to enter --------------------
+-------------------- Save with leader - s --------------------
 keymap("n", "<leader>s", "<cmd>w<CR>", opts)
+
+-------------------- Clear highlight search --------------------
+keymap("n", "<leader>cs", "<cmd>noh<CR>", opts)
 
 -------------------- Move text up/ down ------------------------
 -- Visual --
@@ -50,8 +53,8 @@ keymap("v", "<A-S-k>", ":m .-2<CR>==", opts)
 keymap("x", "<A-S-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-S-k>", ":move '<-2<CR>gv-gv", opts)
 -- Normal --
-keymap("n", "<A-S-j>", ":m .+1<CR>==", opts)
-keymap("n", "<A-S-k>", ":m .-2<CR>==", opts)
+keymap("n", "K", ":m .+1<CR>==", opts)
+keymap("n", "J", ":m .-2<CR>==", opts)
 -- Insert --
 keymap("i", "<A-S-j>", "<ESC>:m .+1<CR>==gi", opts)
 keymap("i", "<A-S-k>", "<ESC>:m .-2<CR>==gi", opts)
