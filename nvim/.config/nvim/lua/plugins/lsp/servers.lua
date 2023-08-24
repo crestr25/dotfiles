@@ -1,7 +1,5 @@
 local servers = {
   clangd = {},
-  cssls = {},
-  html = {},
   jsonls = {},
   sqlls = {},
   lua_ls = {

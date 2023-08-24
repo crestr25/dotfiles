@@ -23,7 +23,7 @@ return {
 					"yaml",
 				},
 				sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-				ignore_install = { "phpdoc", "tree-sitter-phpdoc" }, -- List of parsers to ignore installing
+				ignore_install = { "help", "phpdoc", "tree-sitter-phpdoc" }, -- List of parsers to ignore installing
 				autopairs = {
 					enable = true,
 				},

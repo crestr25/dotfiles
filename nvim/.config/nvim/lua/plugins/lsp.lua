@@ -6,11 +6,18 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+            {
+                "folke/neodev.nvim",
+                event = "LspAttach",
+                config = function()
+                    require("neodev").setup()
+                end,
+            },
         },
         config = function()
             -- special attach lsp
             require("utils.util").on_attach(function(client, buffer)
-                require("plugins.config.lsp.keymaps").on_attach(client, buffer)
+                require("plugins.lsp.keymaps").on_attach(client, buffer)
                 -- require("tvl.config.lsp.inlayhints").on_attach(client, buffer)
                 -- require("tvl.config.lsp.gitsigns").on_attach(client, buffer)
             end)
@@ -20,12 +27,11 @@ return {
                 name = "DiagnosticSign" .. name
                 vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
             end
-            vim.diagnostic.config(require("plugins.config.lsp.diagnostics")["on"])
-
+            vim.diagnostic.config(require("plugins.lsp.diagnostics")["on"])
 
             -- Setup Language Servers
 
-            local servers = require("plugins.config.lsp.servers")
+            local servers = require("plugins.lsp.servers")
             local capabilities =
                 require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
             local function setup(server)
@@ -64,9 +70,24 @@ return {
     {
         "jose-elias-alvarez/null-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        dependencies = { "mason.nvim" },
+        dependencies = {
+            {
+                "jay-babu/mason-null-ls.nvim",
+                cmd = { "NullLsInstall", "NullLsUninstall" },
+                opts = {
+                    ensure_installed = {
+                        "prettier",
+                        "stylua",
+                        "black",
+                        "sql_formatter",
+                    },
+                    automatic_setup = true,
+                },
+            },
+        },
         config = function()
             local null_ls = require("null-ls")
+
             local formatting = null_ls.builtins.formatting
             null_ls.setup({
                 debug = false,
@@ -78,18 +99,5 @@ return {
                 },
             })
         end,
-    },
-
-    {
-        "jay-babu/mason-null-ls.nvim",
-        opts = {
-            ensure_installed = {
-                "prettier",
-                "stylua",
-                "black",
-                "sql_formatter",
-            },
-            automatic_setup = true,
-        },
     },
 }
