@@ -101,10 +101,11 @@ local which_key = {
                 --   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
                 --   ["m"] = { "<cmd>WindowsMaximize<CR>", "Zoom window" },
                 ["f"] = {
-                    "<cmd>lua require('telescope.builtin').find_files()<cr>",
-                    "Find files",
+                    name = "Telescope",
+                    f = { "<cmd>lua require('telescope.builtin').find_files()<cr>","Find files" },
+                    s = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+                    u = { "<cmd>Telescope undo<cr>", "Undo Tree" }
                 },
-                ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
                 --   ["p"] = {
                 --     "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
                 --     "Projects",

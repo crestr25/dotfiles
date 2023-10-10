@@ -18,6 +18,8 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # Use RipGrep
+# Use the CLI ripgrep to respect ignore files (like '.gitignore'),
+# display hidden files, and exclude the '.git' directory.
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git' 2>/dev/null"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 

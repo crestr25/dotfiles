@@ -3,10 +3,13 @@ local colorscheme = {
         "navarasu/onedark.nvim",
         config = function()
             require('onedark').setup {
-                style = 'darker'
+                style = 'darker',
+                transparent = false,
+                code_style = {
+                    comments = 'italic'
+                }
             }
             require('onedark').load()
-            -- vim.cmd.colorscheme("onedark")
         end,
     },
 }

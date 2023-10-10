@@ -66,6 +66,8 @@ local cmp = {
                         luasnip.expand()
                     elseif luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
+                    elseif require("copilot.suggestion").is_visible() then
+                        require("copilot.suggestion").accept()
                     else
                         fallback()
                     end
