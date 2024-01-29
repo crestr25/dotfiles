@@ -1,4 +1,5 @@
 return {
-  "stevearc/dressing.nvim",
-  event = "VeryLazy",
+	-- Nice vim.ui.input and vim.ui.select
+	"stevearc/dressing.nvim",
+	event = "VeryLazy",
 }

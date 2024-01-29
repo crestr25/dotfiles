@@ -62,16 +62,16 @@ setopt PUSHD_SILENT
 
 ######## FZF ########
 if [ $(command -v "fzf") ]; then
-    source /opt/homebrew/Cellar/fzf/0.42.0/shell/key-bindings.zsh
-    source /opt/homebrew/Cellar/fzf/0.42.0/shell/completion.zsh
+    source "/usr/local/Cellar/fzf/0.46.0/shell/key-bindings.zsh"
+    source "/usr/local/Cellar/fzf/0.46.0/shell/completion.zsh"
 fi
 
 ######## Plugins ########
 
 # Syntax Highlighting
-source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # Auto Suggestions
-source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Source my scripts
 source "$ZDOTDIR/scripts.sh"

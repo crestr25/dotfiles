@@ -27,4 +27,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PYENV_ROOT="$HOME/.pyenv"
 
 # Starship config
-export STARSHIP_CONFIG=/Users/crestr25/.config/starship/starship.toml
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"

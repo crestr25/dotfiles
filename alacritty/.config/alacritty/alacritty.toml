@@ -1,0 +1,117 @@
+import = ["/Users/crestrepo/.config/alacritty/themes/themes/onedark.toml"]
+
+###########
+# GENERAL #
+###########
+# Live config reload (changes require restart)
+live_config_reload = true  # Default: true
+
+[shell]
+program = "/bin/zsh"  # Example for Linux/BSD/macOS
+args = ["-l"]
+
+#######
+# ENV #
+#######
+
+[env]
+TERM = "xterm-256color"
+
+##########
+# WINDOW #
+##########
+
+[window]
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.9
+title = "Alacritty"
+
+[window.dimensions]
+columns = 150
+lines = 80
+
+[window.padding]
+x = 0
+y = 0
+
+[window.position]
+x = 0
+y = 0
+
+#############
+# SCROLLING #
+#############
+
+[scrolling]
+history = 10000
+
+########
+# FONT #
+########
+
+[font]
+size = 13
+
+[font.offset]
+x = 0
+y = 1
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Italic"
+
+#############
+# SELECTION #
+#############
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"
+
+##########
+# CURSOR #
+##########
+
+[cursor.style]
+blinking = "Never"
+
+############
+# KEYBOARD #
+############
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"

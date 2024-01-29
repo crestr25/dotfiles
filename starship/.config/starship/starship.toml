@@ -17,6 +17,7 @@ trim_at = "."
 disabled = true
 
 [git_branch]
+symbol = " "
 format = "[$symbol$branch]($style) "
 style = "bold red"
 
@@ -40,6 +41,7 @@ style = "bold italic red"
 disabled = true
 
 [python]
+symbol = " "
 format = "via [${symbol}python (${version} )(($virtualenv) )]($style)"
 style = "bold yellow"
 pyenv_prefix = "venv "

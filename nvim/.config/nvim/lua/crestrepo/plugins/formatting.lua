@@ -1,39 +1,26 @@
 return {
-  "stevearc/conform.nvim",
-  lazy = true,
-  event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
-  config = function()
-    local conform = require("conform")
+	"nvimtools/none-ls.nvim",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
+	config = function()
+		local null_ls = require("null-ls")
 
-    conform.setup({
-      formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        svelte = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier" },
-        json = { "prettier" },
-        yaml = { "prettier" },
-        markdown = { "prettier" },
-        graphql = { "prettier" },
-        lua = { "stylua" },
-        python = { "isort", "black" },
-      },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      },
-    })
+		local formatting = null_ls.builtins.formatting
+		local diagnostics = null_ls.builtins.diagnostics
+		local completion = null_ls.builtins.completion
 
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      })
-    end, { desc = "Format file or range (in visual mode)" })
-  end,
+		null_ls.setup({
+			debug = false,
+			sources = {
+				formatting.stylua,
+				formatting.black,
+				formatting.isort,
+				diagnostics.flake8.with({
+                    extra_args = { "--max-line-length", "140" }
+                }),
+				completion.spell,
+			},
+		})
+	end,
 }

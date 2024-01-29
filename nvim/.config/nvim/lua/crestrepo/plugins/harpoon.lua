@@ -1,24 +1,19 @@
 return {
   "ThePrimeagen/harpoon",
+  event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
   config = function()
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+    -- set which-key keymaps
+    local wk = require("which-key")
 
-    keymap.set(
-      "n",
-      "<leader>hm",
-      "<cmd>lua require('harpoon.mark').add_file()<cr>",
-      { desc = "Mark file with harpoon" }
-    )
-    keymap.set("n", "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { desc = "Go to next harpoon mark" })
-    keymap.set(
-      "n",
-      "<leader>hp",
-      "<cmd>lua require('harpoon.ui').nav_prev()<cr>",
-      { desc = "Go to previous harpoon mark" }
-    )
+    wk.register({
+      h = {
+        name = "Harpoon",
+        m = { "<cmd>lua require('crestrepo.utils.funcs').mark_file()<CR>", "Mark file" },
+        a = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Menu" },
+      },
+    }, { prefix = "<leader>" })
   end,
 }
