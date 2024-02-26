@@ -62,8 +62,8 @@ setopt PUSHD_SILENT
 
 ######## FZF ########
 if [ $(command -v "fzf") ]; then
-    source "/usr/local/Cellar/fzf/0.46.0/shell/key-bindings.zsh"
-    source "/usr/local/Cellar/fzf/0.46.0/shell/completion.zsh"
+    source "/usr/local/Cellar/fzf/0.46.1/shell/key-bindings.zsh"
+    source "/usr/local/Cellar/fzf/0.46.1/shell/completion.zsh"
 fi
 
 ######## Plugins ########
