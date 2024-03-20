@@ -8,7 +8,7 @@ return {
 			"lua_ls",
 			"pyright",
 			"bashls",
-      "gopls",
+			"gopls",
 			"jsonls",
 		}
 

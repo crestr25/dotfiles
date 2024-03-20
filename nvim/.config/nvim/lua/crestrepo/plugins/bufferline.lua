@@ -15,5 +15,17 @@ return {
 				},
 			},
 		})
+
+		-- -- set which-key keymaps
+		local wk = require("which-key")
+
+		wk.register({
+			b = {
+				name = "Buffers",
+				n = { "<cmd>bnext<CR>", "Buffer next" },
+				p = { "<cmd>bprev<CR>", "Buffer prev" },
+				d = { "<cmd>bdelete<CR>", "Buffer del" },
+			},
+		}, { prefix = "<leader>" })
 	end,
 }

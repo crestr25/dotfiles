@@ -3,6 +3,7 @@ return {
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"ThePrimeagen/git-worktree.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	config = function()
@@ -10,6 +11,8 @@ return {
 		local actions = require("telescope.actions")
 
 		local icons = require("crestrepo.utils.icons")
+
+		telescope.load_extension("git_worktree")
 		telescope.setup({
 			defaults = {
 				prompt_prefix = icons.ui.Telescope .. " ",
@@ -128,6 +131,11 @@ return {
 				h = { "<cmd>Telescope help_tags<CR>", "Help Tags" },
 				l = { "<cmd>Telescope resume<CR>", "Last Search" },
 				r = { "<cmd>Telescope oldfiles<CR>", "Recent Files" },
+				w = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", "List Worktrees" },
+				W = {
+					"<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>",
+					"Create Worktrees",
+				},
 			},
 		}, { prefix = "<leader>" })
 	end,
