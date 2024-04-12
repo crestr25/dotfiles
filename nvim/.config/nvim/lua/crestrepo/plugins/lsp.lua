@@ -66,11 +66,9 @@ return {
 			severity_sort = true,
 			float = {
 				focusable = true,
-				style = "minimal",
+				-- style = "minimal",
 				border = "rounded",
 				source = "always",
-				header = "",
-				prefix = "",
 			},
 		}
 		vim.diagnostic.config(default_diagnostic_config)

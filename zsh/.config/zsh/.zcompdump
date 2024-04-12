@@ -1,4 +1,4 @@
-#files: 978	version: 5.9
+#files: 979	version: 5.9
 
 _comps=(
 ''\''brew' '_brew_services'
@@ -1682,6 +1682,7 @@ _comps=(
 'ytalk' '_other_accounts'
 'yum' '_yum'
 'yumdb' '_yum'
+'zap' '_zap'
 'zargs' '_zargs'
 'zcalc' '_zcalc'
 'zcat' '_zcat'
@@ -2040,7 +2041,7 @@ autoload -Uz _alacritty _brew _brew_services _colima _docker \
             _zfs_pool _zftp _zip _zle _zlogin \
             _zmodload _zmv _zoneadm _zones _zparseopts \
             _zpty _zsh _zsh-mime-handler _zsocket _zstyle \
-            _ztodo _zypper
+            _ztodo _zypper _zap
 autoload -Uz +X _call_program
 
 typeset -gUa _comp_assocs
