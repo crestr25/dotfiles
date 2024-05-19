@@ -16,9 +16,9 @@ return {
 				formatting.stylua,
 				formatting.black,
 				formatting.isort,
-				diagnostics.flake8.with({
-                    extra_args = { "--max-line-length", "140" }
-                }),
+				-- diagnostics.flake8.with({
+    --                 extra_args = { "--max-line-length", "140" }
+    --             }),
 				-- completion.spell,
 			},
 		})

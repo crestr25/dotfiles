@@ -1,10 +1,11 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
 		config = function()
 			-- import nvim-treesitter plugin
+			require("nvim-treesitter.install").prefer_git = true
+
 			local treesitter = require("nvim-treesitter.configs")
 
 			-- configure treesitter
@@ -15,18 +16,13 @@ return {
 				},
 				-- Automatically install missing parsers when entering buffer
 				auto_install = true,
-				-- List of parsers to ignore installing (or "all")
-				ignore_install = {},
 				-- Install parsers synchronously (only applied to `ensure_installed`)
 				sync_install = false,
 				-- enable indentation
 				indent = { enable = true },
-				-- enable autotagging (w/ nvim-ts-autotag plugin)
-				autotag = {
-					enable = true,
-				},
 				-- ensure these language parsers are installed
 				ensure_installed = {
+                    "c",
 					"json",
 					"yaml",
 					"html",
@@ -35,7 +31,9 @@ return {
 					"markdown_inline",
 					"bash",
 					"lua",
+					"luadoc",
 					"vim",
+					"vimdoc",
 					"dockerfile",
 					"gitignore",
 					"query",

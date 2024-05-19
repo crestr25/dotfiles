@@ -1,10 +1,8 @@
 -- Impatient
 vim.loader.enable()
-
 -------------
 -- OPTIONS --
 -------------
-
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
@@ -41,10 +39,7 @@ vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would sh
 vim.opt.wrap = false -- display lines as one long line
 vim.opt.scrolloff = 0
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 vim.opt.title = false
--- colorcolumn = "80",
--- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
 	stl = " ",

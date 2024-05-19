@@ -1,115 +1,89 @@
 return {
-	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		{
-			"folke/neodev.nvim",
-		},
-	},
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "folke/neodev.nvim",
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-	config = function()
-		local lspconfig = require("lspconfig")
-		local icons = require("crestrepo.utils.icons")
+            { "j-hui/fidget.nvim", opts = {} },
 
-		local servers = {
-			"lua_ls",
-			"pyright",
-			"bashls",
-			"jsonls",
-			"gopls",
-			"yamlls",
-		}
+        },
+        config = function()
+            require("neodev").setup({})
 
-		vim.api.nvim_create_autocmd("LspAttach", {
-			desc = "LSP actions",
-			callback = function(event)
-				local opts = { buffer = event.buf }
+            local capabilities = nil
+            if pcall(require, "cmp_nvim_lsp") then
+                capabilities = require("cmp_nvim_lsp").default_capabilities()
+            end
 
-				-- these will be buffer-local keybindings
-				-- because they only work if you have an active language server
+            local lspconfig = require("lspconfig")
 
-				vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-				vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-				vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-				vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-				vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-				vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-				vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-				vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-				vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-				vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-			end,
-		})
+            local servers = {
+                bashls = true,
+                gopls = true,
+                lua_ls = true,
+                pyright = true,
+                jsonls = true,
+                yamlls = true,
+            }
 
-		local function common_capabilities()
-			-- used to enable autocompletion (assign to every lsp server config)
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+            local servers_to_install = vim.tbl_filter(function(key)
+                local t = servers[key]
+                if type(t) == "table" then
+                    return not t.manual_install
+                else
+                    return t
+                end
+            end, vim.tbl_keys(servers))
 
-			return capabilities
-		end
+            require("mason").setup()
+            local ensure_installed = {
+                "stylua",
+                "lua_ls",
+            }
 
-		-- diagnostics default config
-		local default_diagnostic_config = {
-			signs = {
-				active = true,
-				values = {
-					{ name = "DiagnosticSignError", text = icons.diagnostics.Error },
-					{ name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-					{ name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-					{ name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-				},
-			},
-			virtual_text = true,
-			update_in_insert = false,
-			underline = false,
-			severity_sort = true,
-			float = {
-				focusable = true,
-				-- style = "minimal",
-				border = "rounded",
-				source = "always",
-			},
-		}
-		vim.diagnostic.config(default_diagnostic_config)
+            vim.list_extend(ensure_installed, servers_to_install)
+            require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-		-- Setup icons for diagnostics
-		for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-		end
+            for name, default_config in pairs(servers) do
+                local config = {}
 
-		for _, server in pairs(servers) do
-			local opts = {
-				capabilities = common_capabilities(),
-			}
-			-- Verify if there are extra settings for the server
-			local require_ok, settings = pcall(require, "crestrepo.plugins.lsp_servers." .. server)
+                if default_config ~= true then
+                    config = vim.tbl_deep_extend("force", {}, {
+                        capabilities = capabilities,
+                    }, config)
+                end
 
-			if require_ok then
-				opts = vim.tbl_deep_extend("force", settings, opts)
-			end
+                lspconfig[name].setup(config)
+            end
 
-			if server == "lua_ls" then
-				require("neodev").setup({})
-			end
-			lspconfig[server].setup(opts)
-		end
+            local disable_semantic_tokens = {
+                lua = true,
+            }
 
-		-- set which-key keymaps
-		local wk = require("which-key")
+            vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                    local bufnr = args.buf
+                    local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
-		wk.register({
-			l = {
-				name = "LSP-Actions",
-				a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-				f = { "<cmd>lua vim.lsp.buf.format({async = true })<CR>", "Format Buffer" },
-				i = { "<cmd>LspInfo<CR>", "LSP info" },
-				j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
-				k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
-				l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
-				q = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "QuickFix" },
-				r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Buffer" },
-			},
-		}, { prefix = "<leader>" })
-	end,
+                    vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
+                    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+
+                    vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
+                    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
+
+                    local filetype = vim.bo[bufnr].filetype
+                    if disable_semantic_tokens[filetype] then
+                        client.server_capabilities.semanticTokensProvider = nil
+                    end
+                end,
+            })
+        end,
+    },
 }

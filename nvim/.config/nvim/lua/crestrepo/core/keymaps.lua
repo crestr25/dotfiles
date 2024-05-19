@@ -12,13 +12,29 @@ vim.g.maplocalleader = " "
 
 -- use jj to exit insert mode
 keymap("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" })
-keymap("n", "<leader>s", "<cmd>w<CR>", { desc = "Save current buffer" })
 
 -- clear search highlights
-keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
+
+-- Save current buffer
+keymap("n", "<leader>s", "<cmd>w<CR>", { desc = "Save current buffer" })
+
+-- Disable arrow keys in normal mode
+keymap("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+keymap("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+keymap("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+keymap("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- window management
-keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+-- keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+-- keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+-- keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+-- keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+-- AutoCommands
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking text',
+    group = vim.api.nvim_create_augroup('autocmd-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
