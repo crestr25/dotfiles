@@ -1,2 +1,1 @@
-require("crestrepo.core")
-require("crestrepo.lazy")
+require("crestrepo")

@@ -1,26 +1,25 @@
 return {
-	"nvimtools/none-ls.nvim",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
+	"stevearc/conform.nvim",
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local null_ls = require("null-ls")
+		local conform = require("conform")
 
-		local formatting = null_ls.builtins.formatting
-		local diagnostics = null_ls.builtins.diagnostics
-		-- local completion = null_ls.builtins.completion
-
-		null_ls.setup({
-			debug = false,
-			sources = {
-				formatting.stylua,
-				formatting.black,
-				formatting.isort,
-				-- diagnostics.flake8.with({
-    --                 extra_args = { "--max-line-length", "140" }
-    --             }),
-				-- completion.spell,
+		conform.setup({
+			formatters_by_ft = {
+				json = { "prettierd" },
+				yaml = { "prettierd" },
+				markdown = { "prettierd" },
+				lua = { "stylua" },
+				python = { "isort", "black" },
 			},
 		})
+
+		vim.keymap.set({ "n", "v" }, "<leader>lf", function()
+			conform.format({
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 1000,
+			})
+		end, {})
 	end,
 }

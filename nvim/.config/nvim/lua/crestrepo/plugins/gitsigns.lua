@@ -3,39 +3,32 @@ return {
 	event = { "BufEnter" },
 	cmd = "Gitsigns",
 	config = function()
-		local icons = require("crestrepo.utils.icons")
-
 		local gitsigns = require("gitsigns")
 
 		gitsigns.setup({
 			signs = {
 				add = {
 					hl = "GitSignsAdd",
-					text = icons.ui.BoldLineMiddle,
 					numhl = "GitSignsAddNr",
 					linehl = "GitSignsAddLn",
 				},
 				change = {
 					hl = "GitSignsChange",
-					text = icons.ui.BoldLineDashedMiddle,
 					numhl = "GitSignsChangeNr",
 					linehl = "GitSignsChangeLn",
 				},
 				delete = {
 					hl = "GitSignsDelete",
-					text = icons.ui.TriangleShortArrowRight,
 					numhl = "GitSignsDeleteNr",
 					linehl = "GitSignsDeleteLn",
 				},
 				topdelete = {
 					hl = "GitSignsDelete",
-					text = icons.ui.TriangleShortArrowRight,
 					numhl = "GitSignsDeleteNr",
 					linehl = "GitSignsDeleteLn",
 				},
 				changedelete = {
 					hl = "GitSignsChange",
-					text = icons.ui.BoldLineMiddle,
 					numhl = "GitSignsChangeNr",
 					linehl = "GitSignsChangeLn",
 				},

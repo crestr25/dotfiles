@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-    event = "VimEnter",
+	event = "VimEnter",
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -11,27 +11,18 @@ return {
 
 		telescope.setup({
 			extensions = {
-                fzf = {},
-                wrap_results = true,
+				fzf = {},
+				wrap_results = true,
 			},
 		})
 
-        pcall(require("telescope").load_extension, "fzf")
-		-- -- set which-key keymaps
-		local wk = require("which-key")
+		pcall(require("telescope").load_extension, "fzf")
 
-		wk.register({
-			f = {
-				name = "Telescope",
-				space = { "<cmd>Telescope buffers<CR>", "Buffers Preview" },
-				g = { "<cmd>Telescope git_branches<CR>", "Checkout Branch" },
-				c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
-				f = { "<cmd>Telescope find_files<CR>", "Find Files" },
-				s = { "<cmd>Telescope live_grep<CR>", "Find Text" },
-				h = { "<cmd>Telescope help_tags<CR>", "Help Tags" },
-				l = { "<cmd>Telescope resume<CR>", "Last Search" },
-				r = { "<cmd>Telescope oldfiles<CR>", "Recent Files" },
-			},
-		}, { prefix = "<leader>" })
+		local builtin = require("telescope.builtin")
+
+		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+		vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
+		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 	end,
 }

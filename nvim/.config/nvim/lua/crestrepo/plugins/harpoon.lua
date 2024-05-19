@@ -1,19 +1,24 @@
 return {
 	"ThePrimeagen/harpoon",
-	event = "VeryLazy",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
+	branch = "harpoon2",
 	config = function()
-		-- set which-key keymaps
-		local wk = require("which-key")
+		local harpoon = require("harpoon")
+		harpoon:setup()
 
-		wk.register({
-			h = {
-				name = "Harpoon",
-				m = { "<cmd>lua require('crestrepo.utils.funcs').mark_file()<CR>", "Mark file" },
-				a = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Menu" },
-			},
-		}, { prefix = "<leader>" })
+		vim.keymap.set("n", "<leader>ha", function()
+			harpoon:list():add()
+			vim.notify("󱡅  marked file")
+		end)
+
+		vim.keymap.set("n", "<leader>hl", function()
+			harpoon.ui:toggle_quick_menu(harpoon:list())
+		end)
+
+		-- Set <space>1..<space>5 be my shortcuts to moving to the files
+		for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
+			vim.keymap.set("n", string.format("<space>%d", idx), function()
+				harpoon:list():select(idx)
+			end)
+		end
 	end,
 }
