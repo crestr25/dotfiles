@@ -6,7 +6,7 @@ SAVEHIST=1000000
 export EDITOR="nvim"
 
 # zshvim escape insert
-export VI_MODE_ESC_INSERT="jj" 
+# export VI_MODE_ESC_INSERT="jj" 
 # Language specific
 export GOPATH=$HOME/go
 

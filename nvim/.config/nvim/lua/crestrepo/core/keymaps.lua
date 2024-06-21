@@ -25,11 +25,6 @@ keymap("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 keymap("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 keymap("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
--- window management
--- keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
--- keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
--- keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
--- keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 -- AutoCommands
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking text',

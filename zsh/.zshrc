@@ -11,23 +11,21 @@ plug "$HOME/.config/zsh/exports.zsh"
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 
+# Load and initialise completion system
+autoload -Uz compinit && compinit
 
 # plugins
 plug "hlissner/zsh-autopair"
-plug "zap-zsh/vim"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/fzf"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/vim"
 
 # if workrc (only for work related stuff)
 if [ -f "$HOME/.workrc" ]; then
   source "$HOME/.workrc"
 fi
-
-# Load and initialise completion system
-autoload -Uz compinit
-compinit
 
 # pyenv
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
