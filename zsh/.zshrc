@@ -1,4 +1,5 @@
 #!/bin/sh
+eval $(/opt/homebrew/bin/brew shellenv)
 # Starship
 
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
