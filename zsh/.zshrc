@@ -9,7 +9,6 @@ plug "$HOME/.config/zsh/exports.zsh"
 
 # External programs
 eval "$(starship init zsh)"
-eval "$(atuin init zsh)"
 
 # Load and initialise completion system
 autoload -Uz compinit && compinit
@@ -25,6 +24,12 @@ plug "zap-zsh/vim"
 # if workrc (only for work related stuff)
 if [ -f "$HOME/.workrc" ]; then
   source "$HOME/.workrc"
+fi
+
+# Check if krabby exists to display the 
+if [ -x "$(command -v krabby)" ]
+then
+    krabby random
 fi
 
 # pyenv
