@@ -1,14 +1,14 @@
-import = ["/Users/crestrepo/.config/alacritty/themes/themes/onedark.toml"]
-
 ###########
 # GENERAL #
 ###########
+[general]
+import = ["/Users/crestrepo/.config/alacritty/themes/themes/onedark.toml"]
 # Live config reload (changes require restart)
 live_config_reload = true  # Default: true
 
-[shell]
-program = "/bin/zsh"  # Example for Linux/BSD/macOS
-args = ["-l"]
+[terminal]
+shell = "/bin/zsh"  # Example for Linux/BSD/macOS
+# args = ["-l"]
 
 #######
 # ENV #
