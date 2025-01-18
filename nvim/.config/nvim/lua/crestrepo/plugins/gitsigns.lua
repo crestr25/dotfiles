@@ -6,33 +6,6 @@ return {
 		local gitsigns = require("gitsigns")
 
 		gitsigns.setup({
-			signs = {
-				add = {
-					hl = "GitSignsAdd",
-					numhl = "GitSignsAddNr",
-					linehl = "GitSignsAddLn",
-				},
-				change = {
-					hl = "GitSignsChange",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-				delete = {
-					hl = "GitSignsDelete",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				topdelete = {
-					hl = "GitSignsDelete",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				changedelete = {
-					hl = "GitSignsChange",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-			},
 			watch_gitdir = {
 				interval = 1000,
 				follow_files = true,

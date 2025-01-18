@@ -27,6 +27,9 @@ if [ -f "$HOME/.workrc" ]; then
   source "$HOME/.workrc"
 fi
 
+# fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # Check if krabby exists to display the 
 if [ -x "$(command -v krabby)" ]
 then
