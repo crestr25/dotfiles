@@ -25,6 +25,11 @@ keymap("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 keymap("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 keymap("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
+-- Goodies!
+keymap("n", "<space><space>x", "<cmd>source %<CR>")
+keymap("n", "<space>x", "<cmd>:.lua<CR>")
+keymap("v", "<space>x", "<cmd>:lua<CR>")
+
 -- AutoCommands
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking text',

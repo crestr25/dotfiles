@@ -33,7 +33,7 @@ source <(fzf --zsh)
 # Check if krabby exists to display the 
 if [ -x "$(command -v krabby)" ]
 then
-    krabby random
+    krabby random -i
 fi
 
 # pyenv

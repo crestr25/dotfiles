@@ -6,6 +6,7 @@ require("keys").setup(config)
 
 -- Fonts Config
 config.font = wezterm.font("JetBrains Mono", { weight = "Bold" })
+config.font_size = 12
 
 -- Colorschema
 config.color_scheme = "Ocean (base16)"
