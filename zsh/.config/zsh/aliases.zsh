@@ -16,6 +16,11 @@ alias gdiff="git diff"
 alias gco="git checkout"
 alias gcb='git checkout -b'
 
+# Kubernetes
+alias k="kubectl"
+alias kgp="kubectl get pods"
+alias kgs="kubectl get services"
+
 case "$(uname -s)" in
 
 Darwin)
@@ -34,3 +39,5 @@ CYGWIN* | MINGW32* | MSYS* | MINGW*)
 	# echo 'Other OS'
 	;;
 esac
+
+alias ls='ls -alh'

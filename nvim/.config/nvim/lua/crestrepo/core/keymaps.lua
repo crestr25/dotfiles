@@ -25,8 +25,9 @@ keymap("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 keymap("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 keymap("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
--- Goodies!
+-- Source current file
 keymap("n", "<space><space>x", "<cmd>source %<CR>")
+-- Run lua code
 keymap("n", "<space>x", "<cmd>:.lua<CR>")
 keymap("v", "<space>x", "<cmd>:lua<CR>")
 

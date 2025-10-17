@@ -22,6 +22,11 @@ function M.setup(config)
 		M.split_nav("move", "j"),
 		M.split_nav("move", "k"),
 		M.split_nav("move", "l"),
+        -- Resize Wezterm panes
+		M.split_nav("resize", "h"),
+		M.split_nav("resize", "j"),
+		M.split_nav("resize", "k"),
+		M.split_nav("resize", "l"),
 	}
 end
 
