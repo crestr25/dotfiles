@@ -7,8 +7,8 @@ function M.setup(config)
 	config.keys = {
 		-- Tabs
 		{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
-		{ mods = "LEADER", key = "l", action = act({ ActivateTabRelative = -1 }) },
-		{ mods = "LEADER", key = "h", action = act({ ActivateTabRelative = 1 }) },
+		{ mods = "LEADER", key = "l", action = act({ ActivateTabRelative = 1 }) },
+		{ mods = "LEADER", key = "h", action = act({ ActivateTabRelative = -1 }) },
 		{ mods = "LEADER", key = "<", action = act.MoveTabRelative(1) },
 		{ mods = "LEADER", key = ">", action = act.MoveTabRelative(-1) },
 		{ mods = "LEADER", key = "x", action = act.CloseCurrentTab { confirm = true} },
