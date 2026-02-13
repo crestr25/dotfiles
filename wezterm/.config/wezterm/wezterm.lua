@@ -33,4 +33,13 @@ wezterm.on("gui-startup", function(cmd) -- Set startup window position
 	window:gui_window():set_position(0, 0)
 end)
 
+-- Layout
+wezterm.on('<leader>-l', function(window)
+  -- Create a 3-pane layout: one main on left, two stacked on right
+  local tab, pane, window = window:mux_window():spawn_tab {}
+  local main = pane
+  local top_right = main:split { direction = 'Right', size = 0.5 }
+  local bottom_right = top_right:split { direction = 'Bottom', size = 0.5 }
+end)
+
 return config

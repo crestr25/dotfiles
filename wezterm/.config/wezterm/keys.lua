@@ -11,18 +11,28 @@ function M.setup(config)
 		{ mods = "LEADER", key = "h", action = act({ ActivateTabRelative = -1 }) },
 		{ mods = "LEADER", key = "<", action = act.MoveTabRelative(1) },
 		{ mods = "LEADER", key = ">", action = act.MoveTabRelative(-1) },
-		{ mods = "LEADER", key = "x", action = act.CloseCurrentTab { confirm = true} },
+		{ mods = "LEADER", key = "x", action = act.CloseCurrentTab({ confirm = true }) },
 		-- Panes
 		{ mods = "LEADER", key = "-", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ mods = "LEADER", key = "|", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 		{ mods = "LEADER", key = "m", action = act.TogglePaneZoomState },
 		{ mods = "LEADER", key = "Enter", action = act.ActivateCopyMode },
+		-- Layout
+		{
+			key = "c",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(window, pane)
+				-- Split horizontally, then split the right pane vertically
+				window:perform_action(act.SplitHorizontal({ domain = "CurrentPaneDomain" }), pane)
+				-- window:perform_action(act.SplitVertical({ domain = "CurrentPaneDomain" }), pane)
+			end),
+		},
 		-- Move between split panes
 		M.split_nav("move", "h"),
 		M.split_nav("move", "j"),
 		M.split_nav("move", "k"),
 		M.split_nav("move", "l"),
-        -- Resize Wezterm panes
+		-- Resize Wezterm panes
 		M.split_nav("resize", "h"),
 		M.split_nav("resize", "j"),
 		M.split_nav("resize", "k"),

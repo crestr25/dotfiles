@@ -39,6 +39,9 @@ return {
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
+				map("<leader>d", vim.diagnostic.open_float, "Open floating diagnostic message")
+				map("<leader>q", vim.diagnostic.setloclist, "Open diagnostics list")
+
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.
 				--  To jump back, press <C-T>.
@@ -177,6 +180,7 @@ return {
 			-- 	},
 			-- },
 			pyright = {},
+			gopls = {},
 			jsonls = {},
 			sqlls = {},
 			terraformls = {},

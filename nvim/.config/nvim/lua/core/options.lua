@@ -14,7 +14,7 @@ vim.opt.wrap = false -- display lines as one long line
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true -- enable persistent undo
-vim.opt.formatoptions:remove "o" -- dont add comment on new line
+vim.opt.formatoptions:remove { 'c', 'r', 'o' } -- dont add comment on new line
 
 -- Splitting
 vim.opt.splitbelow = true -- Split below current buffer
