@@ -56,6 +56,12 @@ if [[ "$install_apps" == "y" ]]; then
     # install_custom_formulae
     # install_custom_casks
     # run_brew_bundle
+    #
+    info "===================="
+    info "Setting up dotfiles"
+    info "===================="
+    stow .
+
 else
     printf "\n"
     info "===================="
