@@ -191,6 +191,7 @@ return {
 			html = { filetypes = { "html", "twig", "hbs" } },
 			ltex = {},
 			texlab = {},
+            ts_ls = {},
 		}
 
 		-- Ensure the servers and tools above are installed
